@@ -53,16 +53,19 @@ def cuda_pfb(h_in):
 
     fn.ensure_all_bound()
     fn.fft[0]()
+
+    t4 = time.time()
     #fn.fft[1]()
     fft_out0 = fn.buffer('fft_out0').get(queue)
 
-    t4 = time.time()
+    t5 = time.time()
 
     print("Time for creating context: ", (t1-t0)*1000, "ms")
     print("Time for setting data: ", (t2-t1)*1000, "ms")
     print("Time for pfb fir: ", (t3-t2)*1000, "ms")
     print("Time for pfb fft: ", (t4-t3)*1000, "ms")
-    
+    print("Time for copyting result out: ", (t5-t4)*1000, "ms")
+
     #fft_out1 = fn.buffer('fft_out1').get(queue)
     fft_out0[:,0] = 0
     fft_out0_flat = fft_out0.flatten()

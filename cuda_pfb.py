@@ -49,8 +49,7 @@ def cuda_pfb(h_in):
     #fft_out1 = fn.buffer('fft_out1').get(queue)
     fft_out0[:,0] = 0
     fft_out0_flat = fft_out0.flatten()
-    #return abs(fft_out0_flat).tolist()
-    return abs(fft_out0_flat)
+    return abs(fft_out0_flat).tolist()
 
 def test(d):
     print("Hello!")
