@@ -59,10 +59,11 @@ def test_pfb_fir(repeat=1):
     queue = ctx.create_command_queue()
 
     taps = 4
-    spectra = 133
+    spectra = 128
     channels = 16384
     samples = 2 * channels * (spectra + taps-1)
-    h_in = np.random.randint(0, 256, samples*10//8, np.uint8)
+    #h_in = np.random.randint(0, 256, samples*10//8, np.uint8)
+    h_in = np.random.randint(0, 256, samples, np.uint8)
     print('Size of h_in=',len(h_in))
     weights = np.random.uniform(-1.0, 1.0, (2 * channels * taps,)).astype(np.float32)
     #expected = pfb_fir_host(h_in, channels, weights)
